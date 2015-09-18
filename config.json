@@ -1,0 +1,15 @@
+{"SSDB":
+    {            
+       "Cron":"0 * * * * *",
+       "Debug":true,
+       "Address":"104.155.216.67",
+       "Port":4001,
+       "Auth":"sa23891odi1@8hfn!0932aqiomc9AQjiHH"
+    },
+  "HBASE":
+    {
+       "Cron":"0 * * * * *",
+       "Address": "107.167.184.172",
+       "Port":4001
+    }
+}
