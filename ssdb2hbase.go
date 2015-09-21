@@ -93,7 +93,14 @@ func main() {
 		cfq := GetStructFieldsKV(proxyCounter)
 		for cfqk, cfqv := range cfq{
 			cfqkey := fmt.Sprintf("%s:%s", cf[0], cfqk)
-			mutations = append(mutations, goh.NewMutation(cfqkey, []byte(cfqv.(string))))
+			switch cfqv.(type) {
+				case string:
+					mutations = append(mutations, goh.NewMutation(cfqkey, []byte(cfqv.(string))))
+				case int:
+					mutations = append(mutations, goh.NewMutation(cfqkey, []byte(string(strconv.FormatInt(int64(cfqv.(int)), 10)))))
+				case float64: 
+					mutations = append(mutations, goh.NewMutation(cfqkey, []byte(strconv.FormatFloat(cfqv.(float64),'E',1,64))))
+			}
 		}
 		rowBatches = append(rowBatches, goh.NewBatchMutation([]byte(k), mutations))
 	}
