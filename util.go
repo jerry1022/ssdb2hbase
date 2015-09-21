@@ -117,7 +117,6 @@ func GetStructFieldsKV(v interface{}) map[string]interface{} {
 	val := reflect.Indirect(reflect.ValueOf(v))
         for i := 0; i < val.NumField(); i++ {
 		fields[val.Type().Field(i).Name] = val.Field(i).Interface()
-		//fmt.Printf("%s: %s\n", val.Type().Field(i).Name, val.Field(i).Interface())
 	}
 	return fields
 }
