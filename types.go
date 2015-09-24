@@ -6,12 +6,14 @@ type Configs struct {
 		Address string `json:"Address"`
 		Port int `json:"Port"`
 		Auth string `json:"Auth"`
+		HT string `json:"Hashtable"`
 	} `json:"SSDB"`
 	HBase struct {
 		Cron string `json:"Cron"`
 		Debug bool `json:"Debug"`
 		Address string `json:"Address"`
 		Port int `json:"Port"`
+		Tbl string `json:"Table"`
 	} `json:"HBASE"`
 }
 

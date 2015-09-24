@@ -79,12 +79,12 @@ func main() {
 	var mutations []*Hbase.Mutation
 	var rowBatches []*Hbase.BatchMutation
 
-	result := CreateHbaseTable("proxy-27.126.195.10-80", cf)
+	result := CreateHbaseTable(configs.HBase.Tbl, cf)
 	if !result {
 		log.Printf("Create Table Error")
 	}
 
-	data := ReadSSDBData("Proxy-27.126.195.10:80")
+	data := ReadSSDBData(configs.SSDB.HT)
 	for k, v := range data {
 		jsonerr := json.Unmarshal([]byte(v.(string)), &proxyCounter)
 		if jsonerr != nil {
@@ -104,21 +104,12 @@ func main() {
 		}
 		rowBatches = append(rowBatches, goh.NewBatchMutation([]byte(k), mutations))
 	}
-	updateResult := UpdateHbaseBatchData("proxy-27.126.195.10-80", rowBatches, nil)
+	updateResult := UpdateHbaseBatchData(configs.HBase.Tbl, rowBatches, nil)
 	if updateResult {
 		fmt.Println("Update Successful")
 	}
 
 
-/*
-	c := cron.New()
-	c.AddFunc(configs.SSDB.Cron , CronGetStatus)
-	c.Start()
-	defer c.Stop()
-*/
-//	for {
-//		time.Sleep(1 * time.Second)
-//	}
 }
 
 

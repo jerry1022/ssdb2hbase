@@ -7,7 +7,6 @@ import (
 )
 
 func ReadSSDBData(hname string) map[string]interface{}{
-	//timestamp := strconv.FormatInt(time.Now().Unix(), 10)
 	data, err :=  db.HashRScan(hname, strconv.FormatInt(time.Now().Unix() - (86400 * 40), 10), strconv.FormatInt(time.Now().Unix() - (86400 * 60), 10), 200)
 	if err != nil {
 		log.Printf("Read SSDB Data Error: %s\n", err)
@@ -16,6 +15,6 @@ func ReadSSDBData(hname string) map[string]interface{}{
 }
 
 func DeleteSSDBData() {
-//	res, err := db.HashMultiDel()
+//TO-DO
 }
 

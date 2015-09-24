@@ -26,17 +26,12 @@ func CreateHbaseTable(table string, cf []string ) bool{
 }
 
 func ReadHbaseData(table string, row string) {
-//GetRow(tableName string, row string, attributes map[string]string) (data []*TRowResult, err error) 
-//GetRows(tableName string, rows []string, attributes map[string]string) (data []*TRowResult, err error)
-//GetRowsWithColumns(tableName string, rows []string, columns []string, attributes map[string]string) (data []*TRowResult, err error) 
+//TO-DO
 }
 
 
 func UpdateHbaseData(table string, row []byte) {
-	mutations := make([]*Hbase.Mutation, 1)
-	mutations[0] = goh.NewMutation("cf:c", []byte("value3-mutation"))
-	fmt.Println(mutations)
-//	err := hclient.MutateRow(tableName string, row []byte, mutations []*Hbase.Mutation, timestamp int64, attributes map[string]string)
+//TO-DO
 }
 
 func UpdateHbaseBatchData(table string, rows []*Hbase.BatchMutation, attr map[string]string) bool{
@@ -49,5 +44,6 @@ func UpdateHbaseBatchData(table string, rows []*Hbase.BatchMutation, attr map[st
 }
 
 func DeleteHbaseData() {
+//TO-DO
 }
 
